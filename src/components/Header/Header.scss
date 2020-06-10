@@ -17,6 +17,10 @@
       padding-bottom: 4px;
       margin-top: 3px;
 
+      &:visited {
+        color: black;
+      }
+
       &:hover {
         cursor: pointer;
       }
