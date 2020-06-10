@@ -2,8 +2,20 @@
   background-color: #f0f0f0;
   box-shadow: 0 3px 6px -6px #777;
   height: 60px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  .logo {
+    width: 55px;
+    position: absolute;
+    bottom: 1px;
+    left: 15px;
+  }
 
   .options {
+    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -15,6 +27,7 @@
       position: relative;
       text-decoration: none;
       padding-bottom: 4px;
+      margin-bottom: -3px;
       margin-top: 3px;
 
       &:visited {
@@ -42,6 +55,14 @@
         visibility: visible;
         transform: scaleX(1);
       }
+    }
+
+    .fas.fa-shopping-cart {
+      font-size: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 70%;
     }
   }
 }

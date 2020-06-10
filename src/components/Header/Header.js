@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 
 const Header = () => {
+  const Lion = require("../../assets/lion.png");
   return (
     <div className="Header">
       <div className="options">
+        <Link to="/">
+          <img className="logo" alt="lion" src={Lion} />
+        </Link>
         <Link to="/" className="nav-item">
           HOME
         </Link>
@@ -15,6 +19,7 @@ const Header = () => {
         <Link to="/contact" className="nav-item">
           CONTACT
         </Link>
+        <i className="fas fa-shopping-cart"></i>
       </div>
     </div>
   );
