@@ -2,50 +2,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px 80px;
+  overflow-x: hidden;
+
+  h1.company {
+    font-size: 3.8rem;
+    font-family: "Comfortaa", cursive;
+    color: black;
+    text-shadow: 1px 1px 3px grey;
+    margin: 0;
+    padding-top: 50px;
+  }
+
+  h2.lead {
+    font-family: "Caveat", cursive;
+    font-size: 2rem;
+    color: black;
+    margin: 0;
+    padding-bottom: 50px;
+  }
 
   .directory-menu {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
 
-    .menu-item {
-      min-width: 30%;
-      height: 240px;
-      flex: 1 1 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid black;
-      margin: 0 7.5px 15px;
+  .tracking-in-expand {
+    animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  }
 
-      &:first-child {
-        margin-right: 7.5px;
-      }
+  .text-focus-in {
+    animation: text-focus-in 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
 
-      &:last-child {
-        margin-left: 7.5px;
-      }
-
-      .content {
-        height: 90px;
-        padding: 0 25px;
-        flex-direction: column;
-        align-items: center;
-
-        .title {
-          font-weight: bold;
-          margin-bottom: 6px;
-          font-size: 22px;
-          color: #4a4a4a;
-        }
-
-        .subtitle {
-          font-weight: lighter;
-          font-size: 16px;
-        }
-      }
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
     }
   }
+
+  @keyframes text-focus-in {
+    0% {
+      filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
