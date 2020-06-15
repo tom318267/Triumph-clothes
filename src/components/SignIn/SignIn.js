@@ -1,10 +1,13 @@
 import React from "react";
+import CustomButton from "../CustomButton/CustomButton";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 import "./SignIn.scss";
 
 class SignIn extends React.Component {
   state = {
     email: "",
     password: "",
+    confirmPassword: "",
   };
 
   handleSubmit = (e) => {
@@ -24,20 +27,26 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div class="SignIn">
-        <div class="login-html">
-          <input id="tab-1" type="radio" name="tab" class="sign-in" checked />
-          <label for="tab-1" class="tab">
+      <div className="SignIn">
+        <div className="login-html">
+          <input
+            id="tab-1"
+            type="radio"
+            name="tab"
+            className="sign-in"
+            defaultChecked
+          />
+          <label htmlFor="tab-1" className="tab">
             Sign In
           </label>
-          <input id="tab-2" type="radio" name="tab" class="sign-up" />
-          <label for="tab-2" class="tab">
+          <input id="tab-2" type="radio" name="tab" className="sign-up" />
+          <label htmlFor="tab-2" className="tab">
             Sign Up
           </label>
-          <div class="login-form">
-            <div class="sign-in-htm">
-              <div class="group">
-                <label for="email" class="label">
+          <div className="login-form">
+            <div className="sign-in-htm">
+              <div className="group">
+                <label htmlFor="email" className="label">
                   Email
                 </label>
                 <input
@@ -45,89 +54,101 @@ class SignIn extends React.Component {
                   id="email"
                   name="email"
                   type="email"
-                  class="input"
+                  className="input"
                   value={this.state.email}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Password
                 </label>
                 <input
                   onChange={this.handleChange}
-                  id="pass"
                   name="password"
                   type="password"
-                  class="input"
+                  className="input"
                   value={this.state.password}
                   data-type="password"
                 />
               </div>
-              <div class="group">
-                <input id="check" type="checkbox" class="check" checked />
-                <label for="check">
-                  <span class="icon"></span> Keep me Signed in
+              <div className="group">
+                <input id="check" type="checkbox" className="check" checked />
+                <label htmlFor="check">
+                  <span className="icon"></span> Keep me Signed in
                 </label>
               </div>
-              <div class="group">
-                <input
+              <div className="group">
+                <CustomButton
                   onClick={this.handleSubmit}
                   type="submit"
-                  class="button"
-                  value="Sign In"
-                />
+                  className="button"
+                >
+                  Sign In
+                </CustomButton>
+                <CustomButton
+                  style={{ marginTop: "20px", paddingTop: "10px" }}
+                  onClick={signInWithGoogle}
+                  className="button"
+                >
+                  Sign in with
+                  <img
+                    style={{
+                      width: "20px",
+                      position: "relative",
+                      top: "4px",
+                      left: "5px",
+                    }}
+                    alt="google"
+                    src="https://img.icons8.com/color/48/000000/google-logo.png"
+                  />
+                </CustomButton>
               </div>
-              <div class="hr"></div>
-              <div class="foot-lnk">
+              <div className="hr"></div>
+              <div className="foot-lnk">
                 <a href="#forgot">Forgot Password?</a>
               </div>
             </div>
-            <div class="sign-up-htm">
-              <div class="group">
-                <label for="user" class="label">
-                  Username
-                </label>
-                <input id="user" type="text" class="input" />
-              </div>
-              <div class="group">
-                <label for="pass" class="label">
+            <div className="sign-up-htm">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Password
                 </label>
                 <input
-                  id="pass"
                   type="password"
-                  class="input"
+                  className="input"
                   data-type="password"
+                  value={this.state.password}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
-                  Repeat Password
+              <div className="group">
+                <label htmlFor="pass" className="label">
+                  Confirm Password
                 </label>
                 <input
-                  id="pass"
                   type="password"
-                  class="input"
+                  className="input"
                   data-type="password"
+                  value={this.state.confirmPassword}
                 />
               </div>
-              <div class="group">
-                <label for="pass" class="label">
+              <div className="group">
+                <label htmlFor="pass" className="label">
                   Email Address
                 </label>
-                <input id="pass" type="text" class="input" />
+                <input type="text" className="input" />
               </div>
-              <div class="group">
-                <input
+              <div className="group">
+                <CustomButton
                   onClick={this.handleSubmit}
                   type="submit"
-                  class="button"
-                  value="Sign Up"
-                />
+                  className="button"
+                >
+                  Sign Up
+                </CustomButton>
               </div>
-              <div class="hr"></div>
-              <div class="foot-lnk">
-                <label for="tab-1">Already Member?</label>
+              <div className="hr"></div>
+              <div className="foot-lnk">
+                <label htmlFor="tab-1">Already Member?</label>
               </div>
             </div>
           </div>

@@ -36,6 +36,10 @@ a {
     color: white !important;
   }
 
+  input {
+    outline: none;
+  }
+
   .login-html {
     width: 100%;
     height: 100%;
@@ -86,6 +90,7 @@ a {
   .login-form .group {
     margin-bottom: 15px;
   }
+
   .login-form .group .label,
   .login-form .group .input,
   .login-form .group .button {
@@ -162,6 +167,7 @@ a {
 
   .button {
     cursor: pointer;
+    outline: none;
   }
 
   .hr {
