@@ -157,21 +157,21 @@ const SHOP_DATA = [
         name: "Flannel",
         imageUrl:
           "https://images.unsplash.com/photo-1578238591955-f360d5eda965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        price: 100,
+        price: 30,
       },
       {
         id: 19,
         name: "Sunglasses",
         imageUrl:
           "https://images.unsplash.com/photo-1556136412-5efb47db6fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        price: 100,
+        price: 40,
       },
       {
         id: 20,
         name: "Black T-Shirt",
         imageUrl:
           "https://images.unsplash.com/photo-1590048996760-29d218eb4515?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-        price: 100,
+        price: 25,
       },
     ],
   },

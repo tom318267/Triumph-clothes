@@ -72,7 +72,12 @@ class SignIn extends React.Component {
                 />
               </div>
               <div className="group">
-                <input id="check" type="checkbox" className="check" checked />
+                <input
+                  id="check"
+                  type="checkbox"
+                  className="check"
+                  defaultChecked
+                />
                 <label htmlFor="check">
                   <span className="icon"></span> Keep me Signed in
                 </label>
