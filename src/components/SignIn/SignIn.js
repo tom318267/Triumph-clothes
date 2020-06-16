@@ -1,17 +1,44 @@
 import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { createUserProfileDocument } from "../../firebase/firebase.utils";
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 import "./SignIn.scss";
 
 class SignIn extends React.Component {
   state = {
+    displayName: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserProfileDocument(user, { displayName });
+
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
     this.setState({
       email: "",
@@ -56,6 +83,7 @@ class SignIn extends React.Component {
                   type="email"
                   className="input"
                   value={this.state.email}
+                  required
                 />
               </div>
               <div className="group">
@@ -69,6 +97,7 @@ class SignIn extends React.Component {
                   className="input"
                   value={this.state.password}
                   data-type="password"
+                  required
                 />
               </div>
               <div className="group">
@@ -115,14 +144,43 @@ class SignIn extends React.Component {
             </div>
             <div className="sign-up-htm">
               <div className="group">
+                <label htmlFor="displayName" className="label">
+                  Display Name
+                </label>
+                <input
+                  name="displayName"
+                  onChange={this.handleChange}
+                  type="text"
+                  className="input"
+                  value={this.state.displayName}
+                  required
+                />
+              </div>
+              <div className="group">
+                <label htmlFor="email" className="label">
+                  Email Address
+                </label>
+                <input
+                  name="email"
+                  onChange={this.handleChange}
+                  type="email"
+                  className="input"
+                  value={this.state.email}
+                  required
+                />
+              </div>
+              <div className="group">
                 <label htmlFor="pass" className="label">
                   Password
                 </label>
                 <input
+                  onChange={this.handleChange}
+                  name="password"
                   type="password"
                   className="input"
                   data-type="password"
                   value={this.state.password}
+                  required
                 />
               </div>
               <div className="group">
@@ -130,18 +188,16 @@ class SignIn extends React.Component {
                   Confirm Password
                 </label>
                 <input
+                  name="confirmPassword"
+                  onChange={this.handleChange}
                   type="password"
                   className="input"
                   data-type="password"
                   value={this.state.confirmPassword}
+                  required
                 />
               </div>
-              <div className="group">
-                <label htmlFor="pass" className="label">
-                  Email Address
-                </label>
-                <input type="text" className="input" />
-              </div>
+
               <div className="group">
                 <CustomButton
                   onClick={this.handleSubmit}
