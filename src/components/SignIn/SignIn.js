@@ -1,7 +1,10 @@
 import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
-import { createUserProfileDocument } from "../../firebase/firebase.utils";
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
+import {
+  signInWithGoogle,
+  auth,
+  createUserProfileDocument,
+} from "../../firebase/firebase.utils";
 import "./SignIn.scss";
 
 class SignIn extends React.Component {
@@ -12,7 +15,23 @@ class SignIn extends React.Component {
     confirmPassword: "",
   };
 
-  handleSubmit = async (e) => {
+  handleSignInSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleSignUpSubmit = async (e) => {
     e.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
@@ -113,7 +132,7 @@ class SignIn extends React.Component {
               </div>
               <div className="group">
                 <CustomButton
-                  onClick={this.handleSubmit}
+                  onClick={this.handleSignInSubmit}
                   type="submit"
                   className="button"
                 >
@@ -200,7 +219,7 @@ class SignIn extends React.Component {
 
               <div className="group">
                 <CustomButton
-                  onClick={this.handleSubmit}
+                  onClick={this.handleSignUpSubmit}
                   type="submit"
                   className="button"
                 >
