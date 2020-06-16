@@ -169,6 +169,11 @@ a {
   .button {
     cursor: pointer;
     outline: none;
+
+    &.button:hover {
+      background-color: #e4e4e4;
+      color: black;
+    }
   }
 
   .hr {
