@@ -7,7 +7,7 @@ import {
 } from "../../firebase/firebase.utils";
 import "./SignIn.scss";
 
-class SignIn extends React.Component {
+class SignInAndSignUp extends React.Component {
   state = {
     displayName: "",
     email: "",
@@ -238,4 +238,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default SignInAndSignUp;
