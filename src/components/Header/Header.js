@@ -1,10 +1,12 @@
 import React from "react";
+import CartIcon from "../CartIcon/CartIcon";
+import CartDropdown from "../CartDropdown/CartDropdown";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase/firebase.utils";
 import "./Header.scss";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   const Lion = require("../../assets/lion.png");
   return (
     <div className="Header">
@@ -27,14 +29,17 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
-        <i className="fas fa-shopping-cart"></i>
+        <CartIcon className="bag" />
       </div>
+
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStateToProps)(Header);
