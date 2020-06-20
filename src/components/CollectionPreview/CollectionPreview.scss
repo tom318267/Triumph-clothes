@@ -15,4 +15,16 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .CustomButton {
+    background-color: #e4e4e4;
+    color: black;
+    font-family: "Comfortaa", cursive;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+  }
 }
