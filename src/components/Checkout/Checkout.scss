@@ -25,7 +25,14 @@
   }
 
   .total {
-    margin-top: 20px;
+    margin: 30px 0;
     font-size: 1.5rem;
+  }
+
+  .test-warning {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 24px;
+    color: red;
   }
 }
