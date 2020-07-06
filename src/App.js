@@ -10,6 +10,7 @@ import Shop from "./components/Shop/Shop";
 import SignInAndSignUp from "./components/SignIn/SignIn";
 import CheckoutPage from "./components/Checkout/Checkout";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import "./App.css";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
