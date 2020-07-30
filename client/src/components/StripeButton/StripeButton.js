@@ -21,8 +21,6 @@ const StripeCheckoutButton = ({ price, history, clearCart }) => {
     })
       .then((response) => {
         alert("Payment successful");
-        clearCart();
-        history.push("/");
       })
       .catch((error) => {
         console.log("Payment error: ", JSON.parse(error));
