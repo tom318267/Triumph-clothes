@@ -23,8 +23,18 @@
     font-size: 1rem;
   }
 
+  .price {
+    @media screen and (max-width: 425px) {
+      margin-left: 5px;
+    }
+  }
+
   .quantity {
     display: flex;
+
+    @media screen and (max-width: 425px) {
+      margin-left: 20px;
+    }
 
     .arrow {
       cursor: pointer;

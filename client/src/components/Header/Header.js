@@ -20,8 +20,8 @@ const Header = ({ currentUser, hidden, signOutStart }) => {
         <Link to="/" className="nav-item">
           HOME
         </Link>
-        <Link to="/about" className="nav-item">
-          ABOUT
+        <Link to="/shop" className="nav-item">
+          SHOP
         </Link>
         {currentUser ? (
           <div onClick={signOutStart} className="nav-item">

@@ -31,10 +31,16 @@ a {
   label {
     cursor: pointer;
     padding-bottom: 5px;
+    @media screen and (max-width: 425px) {
+      font-size: 1rem !important;
+    }
   }
 
   label.label {
     color: white !important;
+    @media screen and (max-width: 425px) {
+      font-size: 0.7rem !important;
+    }
   }
 
   input {
@@ -47,6 +53,10 @@ a {
     position: absolute;
     padding: 90px 70px 50px 70px;
     background: rgba(174, 177, 187, 0.9);
+
+    @media screen and (max-width: 425px) {
+      font-size: 0.8rem !important;
+    }
   }
   .login-html .sign-in-htm,
   .login-html .sign-up-htm {
@@ -169,6 +179,10 @@ a {
   .button {
     cursor: pointer;
     outline: none;
+
+    @media screen and (max-width: 425px) {
+      font-size: 0.7rem !important;
+    }
 
     &.button:hover {
       background-color: #e4e4e4;
