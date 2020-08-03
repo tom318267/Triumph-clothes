@@ -30,6 +30,8 @@ a {
 
   @media screen and (max-width: 425px) {
     max-width: 325px;
+    min-height: 650px;
+    margin: 40px auto;
   }
 
   label {
