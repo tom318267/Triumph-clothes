@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { checkUserSession } from "./redux/user/user.actions";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header/Header";
 import Spinner from "./components/Spinner/Spinner";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
@@ -33,6 +35,7 @@ class App extends React.Component {
         <Switch>
           <ErrorBoundary>
             <Suspense fallback={<Spinner />}>
+              <ToastContainer />
               <Route exact path="/" component={HomePage} />
               <Route path="/shop" component={Shop} />
               <Route exact path="/checkout" component={CheckoutPage} />

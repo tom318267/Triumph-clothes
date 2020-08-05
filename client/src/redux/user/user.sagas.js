@@ -1,4 +1,5 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
+import { toast } from "react-toastify";
 import UserActionTypes from "./user.types";
 import {
   signInSuccess,
@@ -33,6 +34,7 @@ export function* signInWithGoogle() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
+    toast.success("Successfully logged in!");
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -48,8 +50,10 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const userRef = yield call(createUserProfileDocument, user);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+    toast.dark("Successfully logged in!");
   } catch (error) {
     put(signInFailure(error));
+    toast.error("Wrong credentials");
   }
 }
 
@@ -75,6 +79,7 @@ export function* signOut() {
   try {
     yield auth.signOut();
     yield put(signOutSuccess());
+    toast.dark("You have logged out!");
   } catch (error) {
     yield put(signOutFailure(error));
   }

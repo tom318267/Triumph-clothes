@@ -6,6 +6,7 @@ import {
   emailSignInStart,
   signUpStart,
 } from "../../redux/user/user.actions";
+import { toast } from "react-toastify";
 import "./SignIn.scss";
 
 class SignInAndSignUp extends React.Component {
@@ -31,7 +32,7 @@ class SignInAndSignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      toast.error("Passwords don't match");
       return;
     }
 
@@ -41,6 +42,8 @@ class SignInAndSignUp extends React.Component {
       email: "",
       password: "",
     });
+
+    toast.dark("Successfully registered!");
   };
 
   handleChange = (e) => {
