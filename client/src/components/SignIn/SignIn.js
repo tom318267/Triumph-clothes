@@ -6,7 +6,7 @@ import {
   emailSignInStart,
   signUpStart,
 } from "../../redux/user/user.actions";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import "./SignIn.scss";
 
 class SignInAndSignUp extends React.Component {
@@ -32,7 +32,11 @@ class SignInAndSignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
-      toast.error("Passwords don't match");
+      Swal.fire({
+        title: "Unsuccessful",
+        icon: "error",
+        text: "Passwords do not match!",
+      });
       return;
     }
 
@@ -43,7 +47,11 @@ class SignInAndSignUp extends React.Component {
       password: "",
     });
 
-    toast.dark("Successfully registered!");
+    Swal.fire({
+      title: "Successful",
+      icon: "success",
+      text: "You have successfully registered!",
+    });
   };
 
   handleChange = (e) => {
