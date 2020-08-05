@@ -16,6 +16,18 @@ import {
   getCurrentUser,
 } from "../../firebase/firebase.utils";
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
+
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
     const userRef = yield call(
@@ -34,10 +46,9 @@ export function* signInWithGoogle() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
-    Swal.fire({
-      title: "Success",
+    Toast.fire({
       icon: "success",
-      text: "You have logged in!",
+      title: "Signed in successfully",
     });
   } catch (error) {
     yield put(signInFailure(error));
@@ -54,17 +65,15 @@ export function* signInWithEmail({ payload: { email, password } }) {
     const userRef = yield call(createUserProfileDocument, user);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-    Swal.fire({
-      title: "Success",
+    Toast.fire({
       icon: "success",
-      text: "You have logged in!",
+      title: "Signed in successfully",
     });
   } catch (error) {
     put(signInFailure(error));
-    Swal.fire({
-      title: "Unsuccessful",
+    Toast.fire({
       icon: "error",
-      text: "Wrong credentials",
+      title: "Wrong credentials",
     });
   }
 }
@@ -91,10 +100,9 @@ export function* signOut() {
   try {
     yield auth.signOut();
     yield put(signOutSuccess());
-    Swal.fire({
-      title: "Successful",
+    Toast.fire({
       icon: "success",
-      text: "You have logged out!",
+      title: "You have logged out!",
     });
   } catch (error) {
     yield put(signOutFailure(error));

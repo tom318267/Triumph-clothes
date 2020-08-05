@@ -28,14 +28,25 @@ class SignInAndSignUp extends React.Component {
   handleSignUpSubmit = async (e) => {
     e.preventDefault();
 
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      onOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
     const { signUpStart } = this.props;
     const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
-      Swal.fire({
-        title: "Unsuccessful",
+      Toast.fire({
         icon: "error",
-        text: "Passwords do not match!",
+        title: "Passwords do not match",
       });
       return;
     }
@@ -47,10 +58,9 @@ class SignInAndSignUp extends React.Component {
       password: "",
     });
 
-    Swal.fire({
-      title: "Successful",
+    Toast.fire({
       icon: "success",
-      text: "You have successfully registered!",
+      title: "Successfully registered",
     });
   };
 
