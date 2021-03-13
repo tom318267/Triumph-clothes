@@ -19,16 +19,14 @@
 
   button {
     margin-top: auto;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
 
-    &.CustomButton {
-      color: white;
-      font-size: 0.8rem;
+    &:focus {
       outline: none;
-      position: relative;
-      cursor: pointer;
-      left: 15px;
-      font-family: "Comfortaa", cursive;
-      margin-top: 15px;
     }
   }
 
